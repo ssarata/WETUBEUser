@@ -9,7 +9,7 @@ async function main() {
     //         "name": "q",
     //     }
     // });
-    // const users = await prisma.test;
+    const users = await prisma.users.findMany();
     console.log(users);
 }
 
