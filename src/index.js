@@ -6,6 +6,7 @@ const port = 3000;
 
 const userRouter = new UserRouter();
 
+app.use(express.json());
 app.use('/users', userRouter.getRouter());
 
 app.listen(port, ()=>{

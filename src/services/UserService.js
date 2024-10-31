@@ -5,20 +5,37 @@ const prismaClient = new PrismaClient();
 
 export default class UserService {
     create(user_data) {
-        //
-        return {};
+        try {
+            return prismaClient.user.create({
+                data: user_data
+            });
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 
     update(id, user_data) {
         return {};
     }
 
-    async get(){
-        return await prismaClient.user.findMany();
+    getAll(){
+        try {
+            return prismaClient.user.findMany();
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 
-    get_user(id){
-        return {};
+    getUser(_id){
+        try {
+            return prismaClient.user.findUnique({
+                where: {
+                    id: _id
+                }
+            });
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 
     delete(id){

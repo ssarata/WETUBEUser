@@ -16,6 +16,12 @@ CREATE TABLE "Video" (
     CONSTRAINT "Video_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+-- CreateTable
+CREATE TABLE "Test" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "libelle" TEXT NOT NULL
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 

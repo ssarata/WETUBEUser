@@ -4,7 +4,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "prisma-generate": "cd src && npx prisma generate"
   },
   "author": "KONDI",
   "license": "ISC",
