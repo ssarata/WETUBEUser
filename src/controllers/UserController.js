@@ -9,17 +9,33 @@ export default class UserController {
     }
 
     async createUser(req, res){
-        const { email, name } = req.body;
-        const user_data = {
-            email: email, 
-            name: name,
+        const data = req.body;
+        
+        const handler = {
+            get(target, prop){
+                if (typeof target[prop] !== "string"){
+                    throw new RangeError(`${prop} doit être une chaine de carractère.`);
+                }
+                return Reflect.get(target, prop);
+            },
+            set(target, prop, _){
+                throw new Error("You can't update "+prop+" Value");
+            }
         };
-        try {
-            const user = await this.userService.create(user_data);
-            res.status(status.HTTP_200_OK).json(user);
+        
+        try {    
+            const dataValidator = new Proxy(data, handler);    
+            const user_data = {
+                email: dataValidator.email, 
+                name: dataValidator.name,
+            };
+            //const user = await this.userService.create(user_data);
+            res.status(status.HTTP_200_OK).json(user_data);
         } catch (error) {
             console.error(error);
-            res.status(status.HTTP_500_INTERNAL_SERVER_ERROR).json();
+            res.status(status.HTTP_400_BAD_REQUEST).json({
+                error: `${error}`
+            });
         }
     }
 
