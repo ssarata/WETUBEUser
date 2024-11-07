@@ -8,7 +8,7 @@ export default class UserRouter {
 
     constructor(){
         this.router = express.Router();
-        this.userController = new UserController();
+        this.userController = new Auth();
         this.initializeRoutes();
     }
 
