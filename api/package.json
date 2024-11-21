@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "prisma-migrate": "cd src && npx prisma migrate dev --name init",
     "prisma-generate": "cd src && npx prisma generate"
