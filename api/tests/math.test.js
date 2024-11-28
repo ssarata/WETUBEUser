@@ -1,7 +1,17 @@
 
+
+import { add } from '../src/utils/math.js';
 import { expect } from 'chai';
-import { add } from '../src/utils/math.mjs';
 import app from '../src/index.js';
+import request from 'supertest';
+
+describe('GET /api/example', () => {
+  it('devrait retourner un statut 200', async () => {
+    const res = await request(app).get('/users');
+    expect(res.status).to.equal(200);
+  });
+});
+
 
 describe('Math Functions', ()=>{
     it('Retourne la somme de 2 + 3', () => {
@@ -11,12 +21,3 @@ describe('Math Functions', ()=>{
     })
 })
 
-// describe('Math Functions', ()=>{
-//     it('Retourne la somme de 2 + 3', (done) => {
-//         chai.request(app)
-//             .get('/ping')
-//             .end((err, res)=>{
-
-//             })
-//     })
-// })

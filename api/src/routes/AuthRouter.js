@@ -1,23 +1,20 @@
 import express from "express";
-import UserController from "../controllers/UserController.js";
+import AuthController from "../controllers/AuthController.js";
 
 
-export default class UserRouter {
+export default class AuthRouter {
     router;
-    userController;
+    authController;
 
     constructor(){
         this.router = express.Router();
-        this.userController = new Auth();
+        this.authController = new AuthController();
         this.initializeRoutes();
     }
 
     initializeRoutes(){
-        this.router.get("/", this.userController.getUsers.bind(this.userController));
-        this.router.post("/", this.userController.createUser.bind(this.userController));
-        this.router.get("/:id", this.userController.getUser.bind(this.userController));
-        this.router.put("/:id", this.userController.updateUser.bind(this.userController));
-        this.router.delete("/:id", this.userController.deleteUser.bind(this.userController));
+        this.router.post("/login", this.authController.login.bind(this.authController));
+        this.router.post("/register", this.authController.register.bind(this.authController));
     }
 
     getRouter(){

@@ -1,3 +1,5 @@
+import bcrypt from 'bcryptjs';
+
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -5,11 +7,13 @@ const prisma = new PrismaClient();
 class Seeder {
     static async run(){
         console.log(":::::::::::::::SEED STARTED:::::::::::::::");
+        const password = '123';
         
         let data_users = [
             {
-                email: "q@q.com",
-                name: "DXR"
+                email: "gh@gh.com",
+                name: "DXR",
+                password: await bcrypt.hash(password, 10),
             }
         ];
 
