@@ -20,3 +20,6 @@ registerRoutes(app);
 app.listen(port, ()=>{
     console.log(`Server stared on ${port}`);
 });
+
+export default app;
+
