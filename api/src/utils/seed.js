@@ -3,7 +3,8 @@ import bcrypt from 'bcryptjs';
 import { PrismaClient } from "@prisma/client";
 import fs from "node:fs/promises";
 
-
+import path  from "node:path";
+import url from "node:url";
 const prisma = new PrismaClient();
 
 class Seeder {
@@ -25,8 +26,12 @@ class Seeder {
 
     static async runUserSeeders() {
         try {
+           // console.log(import.meta.fileTo);
+            const current_path=url.fileURLToPath(import.meta.url)
+            const dirname=path.dirname(current_path)
             
             const json_path = import.meta.dirname+"/seed_data/users.json"
+            
             const content = await fs.readFile(json_path, 'utf-8')
             const users = JSON.parse(content)
 
