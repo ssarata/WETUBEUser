@@ -1,38 +1,24 @@
 import express from "express";
-import UserController from "../controllers/UserController.js";
+import VideoController from "../controllers/VideoController.js";
+import upload from "../utils/multerUpload.js";
 
 
-export default class UserRouter {
+export default class VideoRouter {
     router;
-    userController;
+    videoController;
 
     constructor(){
         this.router = express.Router();
-        this.userController = new UserController();
+        this.videoController = new VideoController();
         this.initializeRoutes();
     }
 
     initializeRoutes(){
-        /**
-         * @swagger
-         * /users:
-         *   get:
-         *     summary: Retrieve a list of users
-         *     responses:
-         *       200:
-         *         description: A list of users.
-         *         content:
-         *           application/json:
-         *             schema:
-         *               type: array
-         *               items:
-         *                 $ref: '#/components/schemas/User'
-         */
-        this.router.get("/", this.userController.getUsers.bind(this.userController));
-        this.router.post("/", this.userController.createUser.bind(this.userController));
-        this.router.get("/:id", this.userController.getUser.bind(this.userController));
-        this.router.put("/:id", this.userController.updateUser.bind(this.userController));
-        this.router.delete("/:id", this.userController.deleteUser.bind(this.userController));
+        this.router.get("/", this.videoController.getVideos.bind(this.videoController));
+        this.router.post("/", upload.single("mediaPath"), this.videoController.createVideo.bind(this.videoController));
+        this.router.get("/:id", this.videoController.getVideo.bind(this.videoController));
+        this.router.put("/:id", upload.single("mediaPath"), this.videoController.updateVideo.bind(this.videoController));
+        this.router.delete("/:id", this.videoController.deleteVideo.bind(this.videoController));
     }
 
     getRouter(){

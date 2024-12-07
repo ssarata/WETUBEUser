@@ -1,0 +1,33 @@
+[
+    {
+      "title": "Introduction to Programming",
+      "description": "A beginner's guide to programming concepts.",
+      "mediaPath": "default.mp4",
+      "status": false
+    },
+    {
+      "title": "Advanced Algorithms",
+      "description": "Exploring complex algorithms and their applications.",
+      "mediaPath": "default.mp4",
+      "status": false
+    },
+    {
+      "title": "Web Development Basics",
+      "description": "An overview of web development tools and techniques.",
+      "mediaPath": "default.mp4",
+      "status": false
+    },
+    {
+      "title": "Machine Learning Explained",
+      "description": "Understanding the fundamentals of machine learning.",
+      "mediaPath": "default.mp4",
+      "status": false
+    },
+    {
+      "title": "Introduction to Databases",
+      "description": "A primer on database management and design.",
+      "mediaPath": "default.mp4",
+      "status": false
+    }
+]
+  

@@ -3,9 +3,21 @@ import ValidationError from "./validationError.js";
 export default class VideoValidator {
     rules() {
         return {
-            name: {
-                validate: (name) => typeof name === 'string' && name.length > 3,
-                message: (value) => `Le nom doit être une chaîne de caractères de plus de 3 caractères. Reçu: ${value}`
+            title: {
+                validate: (title) => typeof title === 'string' && title.length > 3,
+                message: (value) => `Le title doit être une chaîne de caractères de plus de 3 caractères. Reçu: ${value}`,
+            },
+            description: {
+              validate: (description) => description == undefined || typeof description === 'string' && description.length > 10,
+              message: (value) => `La description doit être une chaîne de caractères de plus d'au moins 10 caractères. Reçu: ${value}`,
+            },
+            status: {
+              validate: (status) => typeof status === 'boolean',
+              message: (value) => `Le status doit être un booléen. Reçu: ${value}`,
+            },
+            userId: {
+              validate: async (userId) => typeof userId === 'number',
+              message: (value) => `Le userId doit être un nombre. Reçu: ${value}`,
             },
         };
     }

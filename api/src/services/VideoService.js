@@ -44,6 +44,18 @@ export default class VideoService {
         }
     }
 
+    filter(_title){
+        try {
+            return prismaClient.video.findUnique({
+                where: {
+                    title: _title,
+                }
+            });
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
     delete(_id){
         try {
             return prismaClient.video.delete({
