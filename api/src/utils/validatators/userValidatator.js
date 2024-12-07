@@ -4,7 +4,7 @@ export default class UserValidator {
     rules() {
         return {
             name: {
-                validate: (name) => typeof name === 'string' && name.length > 3,
+                validate: (name) => typeof name === 'string' && name.length >= 3,
                 message: (value) => `Le nom doit être une chaîne de caractères de plus de 3 caractères. Reçu: ${value}`
             },
             email: {

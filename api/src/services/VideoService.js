@@ -2,10 +2,10 @@ import { prismaClient } from "../constantes/prisma.js";
 
 
 
-export default class UserService {
+export default class VideoService {
     create(_data) {
         try {
-            return prismaClient.user.create({
+            return prismaClient.video.create({
                 data: _data
             });
         } catch (error) {
@@ -26,7 +26,7 @@ export default class UserService {
 
     getAll(){
         try {
-            return prismaClient.user.findMany();
+            return prismaClient.video.findMany();
         } catch (error) {
             throw new Error(error);
         }
@@ -34,7 +34,7 @@ export default class UserService {
 
     get(_id){
         try {
-            return prismaClient.user.findUnique({
+            return prismaClient.video.findUnique({
                 where: {
                     id: _id
                 }
@@ -44,11 +44,11 @@ export default class UserService {
         }
     }
 
-    filterByEmail(_email){
+    filter(_title){
         try {
-            return prismaClient.user.findUnique({
+            return prismaClient.video.findUnique({
                 where: {
-                    email: _email,
+                    title: _title,
                 }
             });
         } catch (error) {
@@ -58,7 +58,7 @@ export default class UserService {
 
     delete(_id){
         try {
-            return prismaClient.user.delete({
+            return prismaClient.video.delete({
                 where: {
                     id: _id
                 }

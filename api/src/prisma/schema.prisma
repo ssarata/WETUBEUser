@@ -18,7 +18,7 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  password String?
+  password String
   videos Video[]
 }
 
@@ -31,11 +31,5 @@ model Video {
   userId Int
   user User @relation(fields: [userId], references: [id])
 }
-
-model Test {
-  id Int @id @default(autoincrement())
-  libelle String
-}
-
 
 
